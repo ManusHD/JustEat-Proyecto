@@ -1,0 +1,10 @@
+<!--Añadir plato si es mi restaurante-->
+<li>
+    <h2>{{dish.name}} </h2>
+    <p>Descripción: {{dish.description}} </p>
+    <p>Precio: {{dish.price}}€</p>
+    <form (ngSubmit)="onAgregarCesta()">
+        <button type="submit">Añadir a la cesta</button>
+        <button *ngIf="mio" (click)="onBorrarPlato()" >Borrar plato</button>
+    </form>
+</li>

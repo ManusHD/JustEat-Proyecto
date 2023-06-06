@@ -1,0 +1,79 @@
+<app-perfil></app-perfil>
+<div *ngIf="!crear; else creando" id="Restaurantes" class="tabcontent">
+	<h1>Mis restaurantes</h1>
+	<a (click)="cambiarCrear()" class="crearRest">Crear nuevo retaurante</a>
+	<div *ngFor="let restaurant of restaurantes ">
+		<a class="rest" (click)="onVisitarRestaurante(restaurant.id)"
+			routerLink="/restaurante/{{restaurant.id}}">{{restaurant.name}}</a>
+	</div>
+</div>
+<ng-template #creando>
+	<h1>Introduce los datos del nuevo restaurante</h1>
+	<form [formGroup]="nuevoRestauranteForm" (ngSubmit)="nuevoRestaurante()">
+		<div class="apartadoFormulario">
+			<label for="nombre">Nombre:</label>
+			<input type="text" id="nombre" formControlName="nombre" placeholder="Nombre del restaurante">
+			<div *ngIf="nuevoRestauranteForm.get('nombre')!.invalid && nuevoRestauranteForm.get('nombre')!.touched"
+				class="error-message">
+				Nombre es obligatorio
+			</div>
+		</div>
+		
+		<div class="apartadoFormulario">
+			<label for="direccion">Dirección:</label>
+			<textarea id="direccion" formControlName="direccion" min="0" rows="5" cols="30" placeholder=""></textarea>
+			<div *ngIf="nuevoRestauranteForm.get('direccion')!.invalid && nuevoRestauranteForm.get('direccion')!.touched"
+				class="error-message">
+				Dirección es obligatoria
+			</div>
+		</div>
+
+		<div class="apartadoFormulario">
+			<label for="cEmail">Correo de contacto:</label>
+			<input type="email" id="cEmail" formControlName="cEmail" placeholder="">
+			<div *ngIf="nuevoRestauranteForm.get('cEmail')!.invalid && nuevoRestauranteForm.get('cEmail')!.touched"
+				class="error-message">
+				Correo de contacto es obligatorio y debe ser válido
+			</div>
+		</div>
+
+		<div class="apartadoFormulario">
+			<label for="telefono">Teléfono:</label>
+			<input type="tel" id="telefono" formControlName="telefono" placeholder="">
+			<div *ngIf="nuevoRestauranteForm.get('telefono')!.invalid && nuevoRestauranteForm.get('telefono')!.touched"
+				class="error-message">
+				Teléfono es obligatorio
+			</div>
+		</div>
+
+		<div class="apartadoFormulario">
+			<label for="ciudad">Ciudad:</label>
+			<input type="text" id="ciudad" formControlName="ciudad" placeholder="">
+			<div *ngIf="nuevoRestauranteForm.get('ciudad')!.invalid && nuevoRestauranteForm.get('ciudad')!.touched"
+				class="error-message">
+				Ciudad es obligatoria
+			</div>
+		</div>
+
+		<div class="apartadoFormulario">
+			<p>Bike Friendly:</p>
+			<div class="bike">
+				<input type="radio" id="bike1" formControlName="bikeFriendly" value="1">
+				<label for="bike1" >Sí</label>
+			</div>
+			<div class="bike">
+				<input type="radio" id="bike0" formControlName="bikeFriendly" value="0">
+				<label for="bike0">No</label>
+			</div>
+			<div *ngIf="nuevoRestauranteForm.get('bikeFriendly')!.invalid && nuevoRestauranteForm.get('bikeFriendly')!.touched"
+				class="error-message">
+				Selecciona una opción para Bike Friendly
+			</div>
+		</div>
+
+		<button type="submit" [disabled]="nuevoRestauranteForm.invalid">Crear restaurante</button>
+	</form>
+
+
+	<a (click)="cambiarCrear()" class="crearRest">Volver</a>
+</ng-template>

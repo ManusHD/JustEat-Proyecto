@@ -1,0 +1,10 @@
+<div class="defensa" *ngIf="token" >
+
+    <h1 class="color-white" *ngIf="blanco; else negro" >Número de pedidos: {{nPedidos}} </h1>
+    <ng-template #negro>
+        <h1>Número de pedidos: {{nPedidos}} </h1>
+    </ng-template>
+
+    <h1>Número de restaurantes: {{restaurantes}} </h1>
+    
+</div>

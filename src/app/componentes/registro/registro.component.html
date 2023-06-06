@@ -1,0 +1,32 @@
+<div class="centro">
+    <form [formGroup]="registroForm" (ngSubmit)="onRegistro()">
+        <div class="crear-cuenta">
+            <fieldset>
+                <legend>Crear cuenta</legend>
+                <div class="infoJE">
+                    <a href="">Inicio</a>
+                </div>
+
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" formControlName="cname" required>
+                <label for="apellido" required>Apellidos</label>
+                <input type="text" name="apellidos" formControlName="csurname" required>
+                <label for="email">Correo electrónico</label>
+                <input type="email" name="email" formControlName="cemail" required>
+                <label for="contraseña">Contraseña</label>
+                <input type="password" name="password" formControlName="cpassword" required>
+                <div *ngIf="registroForm.get('cpassword')!.invalid && registroForm.get('cpassword')!.touched"
+                    class="error-message">
+                    La contraseña debe tener 8 caracteres entre los que se incluye un número, una mayúscula, una
+                    minúscula y un carácter alfanumérico
+                </div>
+                <div *ngIf="errorMessage" class="error-message">Este correo ya tiene una cuenta</div>
+                <button type="submit" [disabled]="registroForm.invalid">Crear cuenta</button>
+
+                <p>Al crear una cuenta, aceptas nuestros Términos y Condiciones. Por favor, lee
+                    nuestra Política de Privacidad y Política de Cookie.
+                </p>
+            </fieldset>
+        </div>
+    </form>
+</div>

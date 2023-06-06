@@ -1,0 +1,180 @@
+header{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: white;
+	padding: 16px 8px;
+}
+
+header a{
+	text-decoration: none;
+	font-weight: bold;
+	color: black;
+}
+
+header .encima:hover{
+	text-decoration: underline;
+}
+
+header a img{
+    width: 200px;
+    height: 46.88px;
+}
+
+header ul {
+	list-style: none;
+	margin: 0px 40px;
+	padding: 10px;
+	background-color: white;
+}
+
+p{
+	color: black;
+	font-weight: bold;
+}
+
+header ul a{
+	color: black;
+	display: block;
+	text-decoration: none;
+	font-weight: bold;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+header ul a:hover{
+	background-color: rgb(128, 128, 128, .4);
+	border-radius: 20px;
+}
+
+header ul li {
+	position: relative;
+	float: left;
+}
+
+header ul ul {
+	display: none;
+	position: absolute;
+	top: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+header ul ul li {
+	float: none;
+	width: 150px;
+	height: 30px;
+	height: auto;
+}
+
+header ul li:hover ul{
+	display:block;
+}
+
+.msgCentro {
+    width: 450px;
+    background: white;
+    border-radius: 20px;
+	border: 1px solid;
+	margin: 200px auto 30px;
+	padding: 0px 30px;
+}
+
+.msgCentro h1 {
+	font-size: 28px;
+	text-align: center;
+	height: 40px;
+	color: #fb6100;
+}
+
+.msgCentro h3 {
+	font-weight: bold;
+	font-size: 16px;
+	text-align: center;
+	height: 40px;
+	border-bottom: 1px solid silver;
+}
+
+.msgCentro form {
+	padding: 10px;
+	transform: translateY(-10px);
+}
+
+.direccion input {
+	width: 99%;
+	height: 50px;
+	border: 2px solid silver;
+	border-radius: 7px;
+	outline: none;
+	transition: .5s;
+}
+
+.direccion input:focus {
+	border: 2px solid #ff8000;
+}
+
+.buscarRestaurantes{
+	margin: 20px;
+}
+
+.buscarRestaurantes input {
+	font-weight: bold;
+	font-size: 16px;
+	width: 100%;
+	height: 50px;
+	background-color: #fb6100;
+	color: white;
+	border-style: hidden;
+	border-radius: 30px;
+}
+
+.opciones {
+	margin: 0px 60px;
+}
+
+.logo img {
+	position: relative;
+	width: 20%;
+	transform: translateY(-25%);
+}
+
+
+::placeholder {
+	font-size: 16px;
+	padding-left: 2px;
+}
+
+.tiposCocina {
+	overflow-x: scroll;
+	width: 80%;
+	text-align: center;
+	margin: 50px auto;
+}
+  
+.tiposCocina ul {
+	display: flex;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	margin-bottom: 10px;
+}
+
+.fotos img{
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+  
+.tiposCocina li {
+	padding: 10px;
+	background-color: white;
+	margin-right: 10px;
+	border-style: groove;
+	border-radius: 10px;
+	border-width: 1px;
+	padding: 0;
+}
+
+.tipoCocina p {
+    justify-content: center;
+	text-align: center;
+}

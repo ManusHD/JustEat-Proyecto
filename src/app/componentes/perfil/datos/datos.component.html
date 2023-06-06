@@ -1,0 +1,62 @@
+<app-perfil></app-perfil>
+<h1>Datos</h1>
+<div *ngIf="!modoEdicion; else edicion">
+    <div class="actual">
+        <div>
+            <h4>Nombre:</h4>
+            {{name}}
+        </div>
+        <div>
+            <h4>Apellidos:</h4>
+            {{surname}}
+        </div>
+        <div>
+            <h4>Email:</h4>
+            {{email}}
+        </div>
+        <div>
+            <h4>Contraseña:</h4>
+            ********
+        </div>
+    </div>
+    <button class="btn" (click)="cambiarModoEdicion()">Editar datos</button><br>
+    <button *ngIf="!borrarCuenta; else eliminarCuenta" class="btn" (click)="cambiarBorrarCuenta()"> Eliminar cuenta </button>
+    <ng-template #eliminarCuenta>
+        <h2>¿Está seguro de borrar la cuenta?</h2>
+        <button (click)="onEliminar()" style="background-color: red;">Sí</button>
+        <button (click)="cambiarBorrarCuenta()" style="background-color: green;">NO</button>
+    </ng-template>
+</div>
+<ng-template #edicion>
+    <div *ngIf="checkEdicion; else noCheckEdicion">
+        <h2>¿Estás seguro de los cambios?</h2>
+        <div>
+            <p>Nombre: {{cname}}</p>
+        </div>
+        <div>
+            <p>Apellidos: {{csurname}}</p>
+        </div>
+        <div>
+            <p>Contraseña: {{cpassword}}</p>
+        </div>
+
+        <button (click)="onEditar()" style="background-color: green;">Confirmar</button>
+        <button (click)="onEditarCheckPerfil()" style="background-color: red;">NO</button>
+    </div>
+    <ng-template #noCheckEdicion>
+        <form [formGroup]="editarPerfilForm" (submit)="onEditarCheckPerfil()">
+            <div>
+                <label for="name">Nombre:</label> <input type="text" id="name" name="name" formControlName="cname">
+            </div>
+            <div>
+                <label for="surname">Apellidos:</label> <input type="text" id="surname" name="surname"
+                    formControlName="csurname">
+            </div>
+            <div>
+                <label for="password">Contraseña:</label> <input type="password" id="password" name="password"
+                    formControlName="cpassword" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z0-9]).{8,}">
+            </div>
+            <button class="btn" type="submit" [disabled]="editarPerfilForm.invalid">Guardar cambios</button>
+        </form>
+    </ng-template>
+</ng-template>

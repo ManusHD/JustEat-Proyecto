@@ -1,0 +1,172 @@
+<div *ngIf="!checkBorrar; else borramos">
+    <fieldset>
+        <div *ngIf="mio">
+            <div *ngIf="!editar; else estamosEditando">
+                <button (click)="onCambiarEditar()">Editar restaurante</button><br>
+                <button (click)="onCambiarBorrarRestaurante()">Borrar Restaurante</button>
+            </div>
+            <ng-template #estamosEditando>
+                <div *ngIf="checkEdicion; else noEditando" >
+                    <h3>¿Estás seguro que son correctos los datos?</h3>
+                    <p>Nombre del restaurante: {{ r.name }}</p>
+                    <p>Dirección: {{ r.address }}, {{ r.city }}</p>
+                    <p>Número de teléfono: {{ r.telephone }}</p>
+                    <p>Email: {{ r.contactemail }}</p>
+                    <p>Bike Friendly: {{ r.bikeFriendly }} (0=No, 1=Sí)</p>
+                    <p>Disponible: {{ r.available }} (0=No, 1=Sí)</p>
+                    <button (click)="onEditarRestaurante()" style="background-color: green;" >Confirmar</button>
+                    <button (click)="onCambiarCheckEditar()" style="background-color: red;" >NO</button>
+                </div>
+                <ng-template #noEditando>
+                <fieldset>
+                    <h1>Introduce los nuevos datos del restaurante</h1>
+                    <form [formGroup]="editarRestauranteForm" (ngSubmit)="onCambiarCheckEditar()">
+                        <div class="apartadoFormulario">
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" id="nombre" formControlName="nombre" placeholder="">
+                            <div *ngIf="editarRestauranteForm.get('nombre')!.invalid && editarRestauranteForm.get('nombre')!.touched"
+                                class="error-message">
+                                Nombre es obligatorio
+                            </div>
+                        </div>
+    
+                        <div class="apartadoFormulario">
+                            <label for="direccion">Dirección:</label>
+                            <textarea id="direccion" formControlName="direccion" min="0" rows="5" cols="30"
+                                placeholder=""></textarea>
+                            <div *ngIf="editarRestauranteForm.get('direccion')!.invalid && editarRestauranteForm.get('direccion')!.touched"
+                                class="error-message">
+                                Dirección es obligatoria
+                            </div>
+                        </div>
+    
+                        <div class="apartadoFormulario">
+                            <label for="cEmail">Correo de contacto:</label>
+                            <input type="email" id="cEmail" formControlName="cEmail" placeholder="">
+                            <div *ngIf="editarRestauranteForm.get('cEmail')!.invalid && editarRestauranteForm.get('cEmail')!.touched"
+                                class="error-message">
+                                Correo de contacto es obligatorio y debe ser válido
+                            </div>
+                        </div>
+    
+                        <div class="apartadoFormulario">
+                            <label for="telefono">Teléfono:</label>
+                            <input type="tel" id="telefono" formControlName="telefono" placeholder="">
+                            <div *ngIf="editarRestauranteForm.get('telefono')!.invalid && editarRestauranteForm.get('telefono')!.touched"
+                                class="error-message">
+                                Teléfono es obligatorio
+                            </div>
+                        </div>
+    
+                        <div class="apartadoFormulario">
+                            <label for="ciudad">Ciudad:</label>
+                            <input type="text" id="ciudad" formControlName="ciudad" placeholder="">
+                            <div *ngIf="editarRestauranteForm.get('ciudad')!.invalid && editarRestauranteForm.get('ciudad')!.touched"
+                                class="error-message">
+                                Ciudad es obligatoria
+                            </div>
+                        </div>
+    
+                        <div class="apartadoFormulario">
+                            <p>Bike Friendly:</p>
+                            <div class="radio">
+                                <input type="radio" id="bike1" formControlName="bikeFriendly" value="1">
+                                <label for="bike1">Sí</label>
+                            </div>
+                            <div class="radio">
+                                <input type="radio" id="bike0" formControlName="bikeFriendly" value="0">
+                                <label for="bike0">No</label>
+                            </div>
+                            <div *ngIf="editarRestauranteForm.get('bikeFriendly')!.invalid && editarRestauranteForm.get('bikeFriendly')!.touched"
+                                class="error-message">
+                                Selecciona una opción para Bike Friendly
+                            </div>
+                        </div>
+    
+                        <div class="apartatadoFormulario">
+                            <p>Disponible:</p>
+                            <div class="radio">
+                                <input type="radio" id="disponible" formControlName="available" value="1">
+                                <label for="disponible">Sí</label>
+                            </div>
+                            <div class="radio">
+                                <input type="radio" id="noDisponible" formControlName="available" value="0">
+                                <label for="noDisponible">No</label>
+                            </div>
+                        </div>
+    
+                        <button type="submit" [disabled]="editarRestauranteForm.invalid">Confrimar edición</button>
+                    </form>
+                    <button (click)="onCambiarEditar()">Cerrar</button>
+                </fieldset>
+            </ng-template>
+            </ng-template>
+        </div>
+        <h1>{{ restaurante.name }}</h1>
+        <img src="../../../assets/imagenes/{{restaurante.name.replaceAll(' ', '')}}.jpg" alt="{{restaurante.name}} imagen">
+        <p>Dirección: {{ restaurante.address }}, {{ restaurante.city }}</p>
+        <p>Número de teléfono: {{ restaurante.telephone }}</p>
+        <p>Email: {{ restaurante.contactemail }}</p>
+        <p>Rango de precio: {{ restaurante.minPrice }}€ - {{ restaurante.maxPrice }}€</p>
+        <p>Categorías:
+            <span *ngFor="let category of categorias">
+                ·{{category.name}}
+            </span>
+        </p><p>Valoración media: {{ restaurante.gradesAverage }} ✰</p>
+        <p>Bike Friendly: {{ restaurante.bikeFriendly }}</p>
+    </fieldset>
+    <fieldset>
+        <div>
+            <h1>Menú</h1>
+    
+            <button *ngIf="mio&&!crear" (click)="onCambiarCrearPlato()">Crear un nuevo plato</button>
+            <div *ngIf="crear">
+                <form [formGroup]="dishForm" (ngSubmit)="onAddDish()">
+                    <label for="name">Nombre</label>
+                    <input type="text" id="name" name="name" formControlName="name">
+    
+                    <label for="description">Descripción</label>
+                    <textarea id="description" name="description" formControlName="description"></textarea>
+    
+                    <label for="price">Precio</label>
+                    <input type="text" id="price" name="price" formControlName="price">
+    
+                    <button type="submit" [disabled]="!dishForm.valid">Create</button>
+                </form>
+    
+                <button (click)="onCambiarCrearPlato()">Cerrar</button>
+            </div>
+            <ul>
+                <app-plato *ngFor="let dish of dishes" [dish]="dish" [mio]="mio"></app-plato>
+            </ul>
+        </div>
+    </fieldset>
+    <fieldset>
+        <div>
+            <h1>Valoraciones</h1>  
+            <div *ngIf="valorar; else noValorar">
+                <form [formGroup]="reviewForm"  (ngSubmit)="onPublicarValoracion()">
+                    <label for="review" >Valoracion</label>
+                    <input type="text" id="review" name="review" formControlName="review">
+                    <label for="grade" >Puntuacion</label>
+                    <input type="number" id="grade" name="grade" min="1" max="5" formControlName="grade">
+                    <button type="submit" [disabled]="!reviewForm.valid">Publicar</button>
+                    <button (click)="cambiarValorar()" >Cancelar</button>
+                </form>
+            </div>
+            <ng-template #noValorar>
+                <button (click)="cambiarValorar()" >Dejar valoracion</button>
+            </ng-template>
+
+            <app-valoraciones *ngFor="let valoracion of valoraciones; let i = index" [review]="valoracion" [index]="i" ></app-valoraciones>
+            
+        </div>
+    </fieldset>
+</div>
+<ng-template #borramos >
+    <h1>¿Estás seguro que quieres borrar el restaurante?</h1>
+    <button (click)="onBorrarRestaurante()" style="background-color: red;">SI</button>
+    <button (click)="onCambiarBorrarRestaurante()" style="background-color: green;" >NO</button>
+</ng-template>
+
+

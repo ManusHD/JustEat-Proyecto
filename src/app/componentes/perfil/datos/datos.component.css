@@ -1,0 +1,70 @@
+h1, h4 {
+    color: #ff8000;
+  }
+  
+  .actual div {
+    margin: 10px;
+  }
+  
+  .actual h4 {
+    margin: 0;
+  }
+  
+  .btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ff8000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Estilos para el formulario de edición */
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  form div {
+    margin: 10px;
+  }
+  
+  form h4 {
+    margin: 0;
+  }
+  
+  form label {
+    font-weight: bold;
+  }
+  
+  form input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  form input[type="password"]:valid {
+    border-color: #ff8000;
+  }
+  
+  form input[type="password"]:invalid {
+    border-color: #f00;
+  }
+  
+  form button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ff8000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  
+form button[type="submit"]:disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}

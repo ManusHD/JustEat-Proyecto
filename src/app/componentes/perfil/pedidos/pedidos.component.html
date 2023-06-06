@@ -1,0 +1,10 @@
+<app-perfil></app-perfil>
+<div id="Pedidos" class="tabcontent">
+    <h1>Mis pedidos</h1>
+    <div *ngFor="let pedido of pedidos" class="pedidoCompleto">
+        <h4>Identificador del pedido: {{pedido.id}} </h4>
+        <p class="platos">Platos: {{pedido.platos.join(", ")}}</p>
+            <p class="plato"></p>
+        <p class="precio">Precio: {{pedido.price}}€ </p>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+header a img{
+    width: 200px;
+}
+
+header{
+	font-family: sans-serif;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: white;
+	padding: 16px 8px;
+}
+
+header a, header p{
+    display: flex;
+    align-items: center;
+    margin-right: 25px;
+    justify-content: space-between;
+	color: black;
+	text-decoration: none;
+	font-weight: bold;
+	text-align: center;
+}
+
+header .encima:hover, .cesta:hover{
+	text-decoration: underline;
+}
+
+.derechaHeader{
+	display: flex;
+}

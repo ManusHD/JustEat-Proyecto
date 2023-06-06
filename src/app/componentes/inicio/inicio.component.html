@@ -1,0 +1,15 @@
+<div class="cuerpo">
+    <div class="msgCentro">
+        <h1>Pide lo que te pida el cuerpo</h1>
+        <h3>Comida a domicilio online cerca de ti</h3>
+        <form  (submit)="onBuscarRestaurantes()">
+            <div class="direccion">
+                <input type="text" placeholder="Introduzca una ciudad" name="ciudad" [(ngModel)]="filtro" requiered>
+            </div>
+            <div class="buscarRestaurantes">
+                <input type="submit" value="Buscar restaurantes">
+            </div>
+        </form>
+    </div>
+    <app-seguimientousuario></app-seguimientousuario>
+</div>

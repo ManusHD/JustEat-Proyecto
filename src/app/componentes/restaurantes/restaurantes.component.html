@@ -1,0 +1,26 @@
+<h1>Lista de restaurantes</h1>
+<button (click)="onOrdenar()">Ordenar por relevancia</button>
+<select (change)="onMostrarSeleccion()" [(ngModel)]="seleccion">
+    <option value="disponibles">Disponibles</option>
+    <option value="noDisponibles">No disponibles</option>
+    <option value="todos">Todos</option>
+</select>
+
+<ul>
+    <li *ngFor="let restaurante of restaurantes" class="restaurantes">
+        <a (click)="onVisitarRestaurante(restaurante)" routerLink="/restaurante/{{restaurante.name}}">
+            <div class="partesRest1">
+                <img src="../../../assets/imagenes/{{restaurante.name.replace(' ', '')}}.jpg" alt="imagen Restaurante">
+            </div>
+            <div class="partesRest2">
+                <h1>{{restaurante.name}}</h1>
+                <p>Puntuación: {{restaurante.gradesAverage}} ✰</p>
+            </div>
+            <div class="partesRest3">
+                <p>35 - 50 min.</p>
+                <p>Entrega 1€</p>
+                <p>· Pedido mínimo {{restaurante.minPrice}}</p>
+            </div>
+        </a>
+    </li>
+</ul>

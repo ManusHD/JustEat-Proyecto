@@ -1,0 +1,17 @@
+<header>
+    <a routerLink="/"><img src="../../../assets/imagenes/logo.png"></a>
+
+    <div *ngIf="logeado">
+        <p>Bienvenido, <a routerLink="/perfil" id="perfil" class="encima">  {{userName}} </a></p>
+      </div>
+      <div *ngIf="!logeado">
+        <a (click)="onCambiarLogin($event)" *ngIf="login; else crearCuenta" href="/login" id="inicioSesion" class="encima">Iniciar sesión</a>
+        <ng-template #crearCuenta>
+          <a (click)="onCambiarLogin($event)" href="/registro" id="registro" class="encima">Crear cuenta</a>
+        </ng-template>
+      </div>      
+      <div *ngIf="logeado" class="derechaHeader">
+        <p><a class="cesta" routerLink="/carrito" >Cesta</a></p>
+        <p><a (click)="onLogout()" routerLink="/" alt="logout" class="encima">Desconectarse</a></p>
+      </div>
+</header>

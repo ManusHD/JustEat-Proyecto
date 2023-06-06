@@ -1,0 +1,19 @@
+
+<form #loginForm="ngForm" (ngSubmit)="onLogin()">
+    <div class="iniciar-sesion">
+        <fieldset>
+            <legend>Inicia sesión</legend>
+            
+            
+            <input type="email" name="email" placeholder="Introduce tu email" [(ngModel)]="emailF">
+            <input type="password" name="password" placeholder="Introduce contraseña" [(ngModel)]="passwordF">
+            <div *ngIf="errorMessage" class="error-message">El correo o la contraseña son incorrectos</div>
+            
+            <button class="btn-iniciar" type="submit" name="iniciarSesion">Iniciar sesión</button>    
+            <p><span>¿Nuevo en Just Eat?</span> <a routerLink="/registro" class="nobloque">Crear Cuenta</a></p>
+            <p>Al crear la cuenta, aceptas nuestros terminos y condiciones. Por favor,
+                lee nuestra política de privacidad y nuestra política de cookies
+            </p>
+        </fieldset>   
+    </div>
+</form>

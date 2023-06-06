@@ -1,0 +1,26 @@
+<div *ngIf="checkCesta; else noCheckCesta">
+    <div *ngFor="let plato of cesta" >
+        <h3>{{plato.name}}</h3>
+        <p>{{plato.description}}</p>
+        <p>{{plato.price}}€</p>
+    </div>
+    <h3>Vas a realizar el pedido, ¿está todo correcto?</h3>
+    <button class="btn-check" (click)="onRealizarPedido()" style="background-color: green">SI</button>
+    <button class="btn-check" (click)="onCambiarCheckCesta()" style="background-color: red">NO</button>
+</div>
+<ng-template #noCheckCesta>
+    <div *ngIf="vacia; else noVacia">
+        <h2>La cesta está vacía</h2>
+    </div>
+    <ng-template #noVacia>
+        <h1>Cesta</h1>
+        <div *ngFor="let plato of cesta" >
+            <h3>{{plato.name}}</h3>
+            <p>{{plato.description}}</p>
+            <p>{{plato.price}}€</p>
+            <button (click)="onQuitarCesta(plato)" >Eliminar plato</button>
+        </div>
+        <h2>Total: {{total}}€</h2>
+        <button (click)="onCambiarCheckCesta()" >Realizar pedido</button>
+    </ng-template>
+</ng-template>

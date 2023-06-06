@@ -1,0 +1,202 @@
+body{
+	margin: 0;
+}
+
+.pagina{
+    margin: 0px 10%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header a img{
+    width: 200px;
+}
+
+header{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: white;
+	padding: 16px 8px;
+}
+
+header a, header p{
+    display: flex;
+    align-items: center;
+    margin: 0 25px 0 25px;
+    justify-content: space-between;
+	color: black;
+	text-decoration: none;
+	font-weight: bold;
+	text-align: center;
+}
+
+header .encima:hover{
+	text-decoration: underline;
+}
+
+.derechaHeader a{
+    padding: 12px;
+    margin: 16px 0px;
+    text-decoration: none;  
+    font-weight: bold; 
+}
+
+.derechaHeader a:hover{
+    background-color: rgb(128, 128, 128, .4);
+    border-radius: 20px;
+}
+
+nav{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+nav a{
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 10px;
+}
+
+nav a img {
+    width: 100px;
+    border-radius: 10px; 
+    width: 100px !important;
+    height: 75px !important;
+    border-radius: 10px;   
+}
+
+#alimentacion{
+    background-color: violet;
+}
+
+#almuerzo{
+    background-color: #c31865;
+}
+
+#americana{
+    background-color: #560bad;
+}
+
+#hamburguesas{
+    background-color: blue;
+}
+
+.bloqueInferior{
+    display: flex;
+}
+
+.bloqueIzquierdo{
+    width: 22%;
+    margin-right: 7px;
+}
+
+.bloqueDerecho{
+    width: 78%;
+    margin-left: 7px;
+}
+
+.bloqueIzquierdoSuperior{
+    background-color: rgb(128, 128, 128, 0.2);
+    padding: 11px 25px;
+    border-radius: 100px;
+}
+
+.bloqueIzquierdoInferior .olli{
+    list-style: none;
+    border: 1px solid grey;
+    padding: 12px;
+    border-radius: 100px;
+    margin: 5px 0;
+    box-sizing: border-box;
+}
+
+.bloqueIzquierdoInferior ol a{
+    text-decoration: none;
+}
+
+.bloqueIzquierdoInferior ol li:hover{
+    background-color: rgb(237, 237, 237);
+}
+
+.bloqueIzquierdoInferior ol{
+    display: grid;
+    padding: 0;
+}
+
+.bloqueIzquierdoInferior input{
+    float: right;
+    padding: 5px;
+    border-radius: 50px;
+    border: 1px solid rgb(128, 128, 128, 0.5);
+    position: relative;
+    transform: translateY(-4.5px);
+}
+
+.bloqueDerechoInferior input{
+    float: right;
+    padding: 5px;
+    border: none;
+    border-radius: 50px;
+}
+
+
+input[type="text"]{
+    padding: 19px;
+    border: 1px solid grey;
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1);;
+    border-radius: 50px;
+    outline: none;
+    border-color: rgb(128, 128, 128, 0.5);
+    width: 100%;
+    font-size: 18px;
+}
+
+input[type="text"]:focus{
+    border-color: #ff8000;
+}
+
+.restaurantes {
+    display: flex;
+    margin: 10px 0;
+}
+
+.restaurantes > * {
+    flex: 1 0 20%;
+    margin: 0px;
+}
+
+
+.restaurantes a{
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+}
+
+
+.restaurantes a img{
+    border-radius: 10px;
+    width: 200px;
+    height: 133px;
+}
+
+.partesRest2, .partesRest3{
+    width: 33%;
+    margin: 0px 30px;
+}
+
+h1{
+	margin-top: 0px;
+}
+
+#myUL {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#myInput{
+    max-width: 30em;
+}

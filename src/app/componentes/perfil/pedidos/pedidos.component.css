@@ -1,0 +1,31 @@
+#Pedidos {
+  padding: 20px;
+}
+
+#Pedidos h1 {
+  font-size: 2rem;
+  color: #ff8000;
+}
+
+.pedidoCompleto {
+  margin-bottom: 20px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.pedidoCompleto h4 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.pedidoCompleto .platos {
+  margin: 5px 0;
+  font-size: 1.2rem;
+}
+
+.pedidoCompleto .precio {
+  margin: 5px 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
